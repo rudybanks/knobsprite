@@ -19,7 +19,7 @@ st.markdown(
 )
 
 # Add instructions
-st.write("Load knob png, name, generate")
+st.markdown("**Load knob png, name, generate**")
 
 # Create a variable to hold the image size
 image_size = st.slider("Knob Output Size", min_value=25, max_value=400, value=200)
