@@ -1,6 +1,7 @@
 import streamlit as st
-
 from PIL import Image
+import os
+import base64
 
 # Set the window title
 st.title("Knob Sprite Generator")
@@ -43,6 +44,11 @@ def generate_sprite(image_path, image_size, output_filename):
     # Save the sprite with the user-specified filename
     sprite.save(output_filename)
 
+    # Convert the image file to bytes
+    with open(output_filename, "rb") as img_file:
+        img_bytes = img_file.read()
+    return img_bytes
+
 # Add instructions
 st.write("Load knob png, name, generate")
 
@@ -52,9 +58,16 @@ uploaded_file = st.file_uploader("Select file", type=['png'])
 if uploaded_file is not None:
     # Create a button to generate the sprite
     if st.button("Generate sprite"):
-        generate_sprite(uploaded_file, image_size, output_filename)
+        sprite_bytes = generate_sprite(uploaded_file, image_size, output_filename)
         st.success("Sprite generated successfully!")
+
+        # Create a download button for the sprite
+        st.download_button(
+            label="Download sprite",
+            data=sprite_bytes,
+            file_name=output_filename,
+            mime="image/png",
+        )
 
 # Add copyright text at the bottom
 st.write("© banxmusic.com 2024")
-
