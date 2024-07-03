@@ -4,13 +4,23 @@ import os
 import base64
 
 # Set the window title
-st.title("Knob Sprite Generator")
+#st.title("Knob Sprite Generator")
 
 # URL of the raw logo file on GitHub
 logo_url = "https://raw.githubusercontent.com/rudybanks/knobsprite/main/banxmusic_logo.png"
 
 # Display the logo at the top of the app
-st.image(logo_url, width=200)  # Adjust width as needed
+#st.image(logo_url, width=200)  # Adjust width as needed
+
+# Display the logo next to the title using markdown and HTML
+st.markdown(
+    f"<div style='display: flex; align-items: center;'>"
+    f"<img src='{logo_url}' width='50'>"
+    f"<h1 style='margin-left: 20px;'>Knob Sprite Generator</h1>"
+    f"</div>",
+    unsafe_allow_html=True,
+)
+
 
 # Create a variable to hold the image size
 image_size = st.sidebar.slider("Knob Output Size", min_value=25, max_value=400, value=200)
