@@ -1,6 +1,60 @@
 import streamlit as st
 
-st.title("🎈 My new app")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-)
+from PIL import Image
+
+# Set the window title
+st.title("Knob Sprite Generator")
+
+# Create a variable to hold the image size
+image_size = st.sidebar.slider("Knob Output Size", min_value=25, max_value=400, value=200)
+
+# Create a variable to hold the output filename
+output_filename = st.sidebar.text_input("Use Default or Rename", value="sprite.png")
+
+# Create a function to handle file selection
+@st.cache
+def load_image(file):
+    return Image.open(file)
+
+# Create a function to generate the sprite
+def generate_sprite(image_path, image_size, output_filename):
+    # Load the knob image
+    knob = load_image(image_path)
+
+    # Resize the image based on the slider value
+    knob = knob.resize((image_size, image_size))
+
+    # Create a list to hold the rotated images
+    frames = []
+
+    # Rotate the knob for each step and add to frames
+    for i in range(128):
+        angle = -i * (280 / 127)  # Calculate the angle for this step
+        rotated = knob.rotate(angle)
+        frames.append(rotated)
+
+    # Create an empty image for the sprite
+    sprite = Image.new('RGBA', (image_size, image_size * 128))
+
+    # Paste each frame into the sprite
+    for i, frame in enumerate(frames):
+        sprite.paste(frame, (0, i * image_size))
+
+    # Save the sprite with the user-specified filename
+    sprite.save(output_filename)
+
+# Add instructions
+st.write("Load knob png, name, generate")
+
+# Create a button to select a file
+uploaded_file = st.file_uploader("Select file", type=['png'])
+
+if uploaded_file is not None:
+    # Create a button to generate the sprite
+    if st.button("Generate sprite"):
+        generate_sprite(uploaded_file, image_size, output_filename)
+        st.success("Sprite generated successfully!")
+
+# Add copyright text at the bottom
+st.write("© banxmusic.com 2024")
+
