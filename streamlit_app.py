@@ -25,7 +25,7 @@ st.write("Load knob png, name, generate")
 image_size = st.slider("Knob Output Size", min_value=25, max_value=400, value=200)
 
 # Create a variable to hold the output filename
-output_filename = st.text_input("Use Default or Rename", value="sprite.png")
+output_filename = st.text_input("OUTPUT FILENAME: Use Default or Rename", value="sprite.png")
 
 # Create a function to handle file selection
 @st.cache
