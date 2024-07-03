@@ -7,7 +7,8 @@ import base64
 #st.title("Knob Sprite Generator")
 
 # URL of the raw logo file on GitHub
-logo_url = "https://raw.githubusercontent.com/rudybanks/knobsprite/main/banxmusic_logo.png"
+logo_url = "https://raw.githubusercontent.com/rudybanks/knobsprite/main/banxmusic_logo_github.jpg"
+
 
 # Display the logo at the top of the app
 #st.image(logo_url, width=200)  # Adjust width as needed
