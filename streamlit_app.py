@@ -90,5 +90,6 @@ if uploaded_file is not None:
         )
 
 # Add copyright text at the bottom
-st.markdown("©2024 [banxmusic.com](%s)" % website)
+st.write("©2024 [banxmusic.com](%s)" % website_url)
+st.markdown("©2024 [banxmusic.com](%s)" % website_url)
 
