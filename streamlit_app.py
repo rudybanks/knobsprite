@@ -6,6 +6,12 @@ import base64
 # Set the window title
 st.title("Knob Sprite Generator")
 
+# URL of the raw logo file on GitHub
+logo_url = "https://raw.githubusercontent.com/rudybanks/knobsprite/main/banxmusic_logo.png"
+
+# Display the logo at the top of the app
+st.image(logo_url, width=200)  # Adjust width as needed
+
 # Create a variable to hold the image size
 image_size = st.sidebar.slider("Knob Output Size", min_value=25, max_value=400, value=200)
 
