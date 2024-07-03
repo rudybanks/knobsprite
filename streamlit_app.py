@@ -3,15 +3,8 @@ from PIL import Image
 import os
 import base64
 
-# Set the window title
-#st.title("Knob Sprite Generator")
-
 # URL of the raw logo file on GitHub
 logo_url = "https://raw.githubusercontent.com/rudybanks/knobsprite/main/banxmusic_logo_github.jpg"
-
-
-# Display the logo at the top of the app
-#st.image(logo_url, width=200)  # Adjust width as needed
 
 # Website URL
 website_url = "http://banxmusic.com"
@@ -25,6 +18,8 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+# Add instructions
+st.write("Load knob png, name, generate")
 
 # Create a variable to hold the image size
 image_size = st.slider("Knob Output Size", min_value=25, max_value=400, value=200)
