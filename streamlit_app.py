@@ -13,10 +13,13 @@ logo_url = "https://raw.githubusercontent.com/rudybanks/knobsprite/main/banxmusi
 # Display the logo at the top of the app
 #st.image(logo_url, width=200)  # Adjust width as needed
 
+# Website URL
+website_url = "http://banxmusic.com"
+
 # Display the logo next to the title using markdown and HTML
 st.markdown(
     f"<div style='display: flex; align-items: center;'>"
-    f"<img src='{logo_url}' width='50'>"
+    f"<a href='{website_url}' target='_blank'><img src='{logo_url}' width='50'></a>"
     f"<h1 style='margin-left: 20px;'>Knob Sprite Generator</h1>"
     f"</div>",
     unsafe_allow_html=True,
