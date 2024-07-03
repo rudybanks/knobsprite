@@ -19,7 +19,7 @@ st.markdown(
 )
 
 # Add instructions
-st.markdown("**Load knob png, name, generate**")
+st.markdown("**Choose Output Knob Size, Choose name, Load knob png, Generate and Download**")
 
 # Create a variable to hold the image size
 image_size = st.slider("Knob Output Size", min_value=25, max_value=400, value=200)
@@ -68,8 +68,7 @@ def generate_sprite(image_path, image_size, output_filename):
         img_bytes = img_file.read()
     return img_bytes
 
-# Add instructions
-st.write("Load knob png, name, generate")
+
 
 # Create a button to select a file
 uploaded_file = st.file_uploader("Select file", type=['png'])
